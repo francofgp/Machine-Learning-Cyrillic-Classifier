@@ -1,17 +1,9 @@
-from matplotlib import widgets
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 import cv2 as cv
 from skimage.feature import hog
-from skimage.color import rgb2grey, rgb2gray, rgba2rgb
-from PIL import Image
 import numpy as np
-import pandas as pd
-import time
 import pickle
-import matplotlib as mpl
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
 
 
 # importamos todo lo de pickle, modelo, Scaler y PCA
