@@ -1,0 +1,17 @@
+name: iafrvm
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+  - ipykernel
+  - matplotlib
+  - pandas
+  - seaborn
+  - plotly
+  - scipy
+  - scikit-learn
+  - scikit-image
+  - tqdm
+  - autopep8
+  - scikit-plot
+prefix: C:\ProgramData\Anaconda3\envs\iafrvm
