@@ -5,4 +5,5 @@ numpy
 scikit-image
 streamlit-drawable-canvas
 scikit-learn
-opencv-python
+opencv-python-headless
+
