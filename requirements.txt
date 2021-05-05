@@ -6,5 +6,4 @@ scikit-image
 streamlit-drawable-canvas
 scikit-learn
 opencv-python
-pickle
 pip==21.1.1
