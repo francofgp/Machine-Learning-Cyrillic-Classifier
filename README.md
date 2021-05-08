@@ -50,7 +50,7 @@ This jupyter notebook will generate the following files:
 - pca.pkl
 - sc.pkl
 
-This files are necessary for the streamlit app to work, in this files I stored the SVM model, the StandardScaler and the PCA, so I don't need to train every time that the model needs to predict one letter <br>
+This files are necessary for the streamlit app to work, in this files I stored the SVM model, the StandardScaler and the PCA, so I don't need to train the model every time that the model needs to predict one letter <br>
 The file "feature_matrix.pkl", it is where I to stored all the features off the images, with this files i dont have to wait to loop through the images every time I restart the kernel.
 
 The file *"generador dataframe cirilico.ipynb"* is it used to generate the dataframe for the images themself.
