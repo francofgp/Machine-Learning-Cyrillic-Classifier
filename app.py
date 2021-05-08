@@ -38,35 +38,46 @@ value = st.sidebar.selectbox(
 
 text = {"English":
         {
+            "instruction": "Draw a letter and hit the predict button",
             "title": "Cyrillic Classifier",
             "predict": "Predict",
             "prediction": "Prediction",
             "stroke width": "Stroke width",
-            "color": "Stroke color HEX"
+            "color": "Stroke color HEX",
+            "message": "See how it works!",
+            "created": "Created by Pértile Franco Giuliano"
         },
         "Español":
-        {
+        {"instruction": "Dibuje una letra, y presione el botón Predecir",
             "title": "Clasificador Cirílico",
             "predict": "Predecir",
             "prediction": "Predicción",
             "stroke width": "Grosor",
-            "color": "Color del lápiz HEX"
-        },
+            "color": "Color del lápiz HEX",
+            "message": "Vea cómo funciona!",
+
+            "created": "Creado by Pértile Franco Giuliano"
+
+         },
         "Русский":
-        {
+        {"instruction": "Нарисуйте букву а потом нажмите кнопку Распознавать",
             "title": "Классификатор Кириллического",
             "predict": "Распознавать",
             "prediction": "Распознавание",
-            "stroke width": "Шинина",
-            "color": "Цвет карандаша ШСС (HEX)"
-        }
+            "stroke width": "Ширина",
+            "color": "Цвет карандаша (HEX)",
+            "message": "Посмотрите, как работает!",
+
+            "created": "Сделано Пертиле Франко Джулиано"
+
+         }
         }
 alfabeto = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
 alfabeto_espacio = "А Б В Г Д Е Ё Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я"
 
 st.title(text[value]["title"])
 st.markdown(f"**{alfabeto_espacio}**")
-
+st.markdown(f"{text[value]['instruction']}")
 # Specify brush parameters and drawing mode
 stroke_width = st.sidebar.slider("{}: ".format(
     text[value]["stroke width"]), 1, 100, 25)
@@ -90,7 +101,6 @@ predict = st.button(text[value]["predict"])
 
 def get_prediction(image):
     pass
-
 
     # get the prediction from your model and return it
 if canvas_result.image_data is not None and predict:
@@ -128,3 +138,9 @@ if canvas_result.image_data is not None and predict:
     #st.text("Prediction : {}".format(prediction))
     # st.balloons()
     #outputs = predict(canvas_result.image_data)
+
+
+st.markdown(
+    f"{text[value]['message']} [GitHub](https://github.com/francofgp/Machine-Learning-Cyrillic-Classifier)")
+
+st.markdown(f"#### *{text[value]['created']}* ")
