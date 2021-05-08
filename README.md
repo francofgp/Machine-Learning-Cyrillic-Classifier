@@ -55,6 +55,11 @@ The file "feature_matrix.pkl", it is where I to stored all the features off the 
 
 The file *"generador dataframe cirilico.ipynb"* is it used to generate the dataframe for the images themself.
 
+### Hosting files
+The following files are just for the heroku deployment:
+- setup.sh
+- Procfile
+- runtime.txt
 
 ## Dataset
 
