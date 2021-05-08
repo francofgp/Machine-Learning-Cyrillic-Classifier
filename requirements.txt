@@ -10,4 +10,3 @@ pillow
 seaborn
 matplotlib
 scikit-plot
-opencv-python
