@@ -3,7 +3,7 @@ plotly
 pandas
 numpy
 scikit-image
-streamlit-drawable-canvas
+streamlit-drawable-canvas==0.5.2
 scikit-learn
 opencv-python-headless
 pillow
