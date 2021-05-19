@@ -66,7 +66,10 @@ The following files are just for the heroku deployment:
 The dataset comes from [Thanks to This GitHub](https://github.com/GregVial/CoMNIST)
 
 ## Showcase
+#### Example
+![Imgur](https://i.imgur.com/E11Xqey.png)
 
+## Language UI
 #### English
 ![Imgur](https://i.imgur.com/3B0EB0Y.png)
 
