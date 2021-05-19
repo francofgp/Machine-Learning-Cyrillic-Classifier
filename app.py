@@ -7,6 +7,7 @@ import pickle
 
 
 # importamos todo lo de pickle, modelo, Scaler y PCA
+# para despues usarlos con esos nombres de variables
 pkl_filename = "sc.pkl"
 with open(pkl_filename, 'rb') as file:
     sc = pickle.load(file)
@@ -33,9 +34,11 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
+
+#
 value = st.sidebar.selectbox(
     "Language/Idioma/Язык", ["English", "Español", "Русский"])
-
+# Diccionario con todas las traducciones
 text = {"English":
         {
             "instruction": "Draw a letter and hit the predict button",
@@ -102,42 +105,34 @@ predict = st.button(text[value]["predict"])
 def get_prediction(image):
     pass
 
-    # get the prediction from your model and return it
+
 if canvas_result.image_data is not None and predict:
+    # 1: Obtengo la imagen del canvas
     imagen = canvas_result.image_data
     imagen = imagen.astype('uint8')
-
+    # 2: Recorto la imagen
     img_prueba_recortada = cv.resize(imagen, (64, 64))
-    #st.text("Imagen recortada")
-    # st.image(img_prueba_recortada.astype('int64'))
 
-    #st.text("Imagen blanco y negro")
+    # 3:Hago Blanco y negro la imagen
     imagen_prueba_gris = cv.cvtColor(img_prueba_recortada, cv.COLOR_BGR2GRAY)
-    #st.image(cv.resize(img_prueba_recortada, (256, 256)).astype('int64'))
-
-    #st.text("Imagen blur")
+    # 4: Aplico filtro Gaussiano
     image_prueba_blur = cv.GaussianBlur(imagen_prueba_gris, (5, 5), 0)
-    #st.image(cv.resize(image_prueba_blur, (256, 256)).astype('int64'))
-
-    #st.text("Imagen HOG")
+    # 5: Obtengo la matriz HOG
     hog_prueba, hog_image = hog(image_prueba_blur, visualize=True, orientations=8,
                                 block_norm='L2-Hys', pixels_per_cell=(8, 8), cells_per_block=(2, 2))
     hog_prueba = hog_prueba.reshape(-1, 1)
-    #st.image(cv.resize(hog_prueba, (256, 256)).astype('int64'))
-
+    # 6: escalos los datos para PCA
     hog_prueba_scaled = sc.transform(hog_prueba.transpose())
-
+    # 7: aplico PCA
     hog_prueba = pca.transform(hog_prueba_scaled)
-
+    # 8: realizo la prediccion
     y_pred = model.predict(hog_prueba)
+
+    # 9:Obtengo el la prediccion en un resultado mas visible, osea la letra
     res = {np.linspace(1, 33, 33)[i]: list(alfabeto)[i]
            for i in range(len(np.linspace(1, 33, 33)))}
     if y_pred[0] in res:
         st.success("{} : {}".format(text[value]["prediction"], res[y_pred[0]]))
-
-    #st.text("Prediction : {}".format(prediction))
-    # st.balloons()
-    #outputs = predict(canvas_result.image_data)
 
 
 st.markdown(
